@@ -1,4 +1,4 @@
-// Маємо об'єкт з інформацією про види спорту, кількість представників і кількість медалей. 
+// Маємо об'єкт з інформацією про види спорту, кількість представників і кількість медалей.
 // Необхідно додати нове поле percentOfSuccess, яке буде показувати відсоток завойованих медалей від загальної кількості спортсменів у кожному виді спорту.
 "ВИКОРИСТОВУВАТИ ЛИШЕ МЕТОДИ МАСИВІВ filter, map, sort та інші, які є в файлі methods.js."
 "Можливо в цій задачі доведеться в методі map розкривати фігурні дужки для роботи з обʼєктом."
@@ -9,7 +9,16 @@
 "Для заокруглення числа можна до десятих використовуйте .toFixed(1)"
 
 function addSuccessPercent(olympicRepresentation) {
-  // Ваш код
+  return olympicRepresentation.map(item => {
+    const percentOfSuccess = item.athletes > 0
+      ? ((item.medals / item.athletes) * 100).toFixed(1) + '%'
+      : '0%';
+
+    return {
+      ...item,
+      percentOfSuccess
+    };
+  });
 }
 
 const olympicRepresentation = [
